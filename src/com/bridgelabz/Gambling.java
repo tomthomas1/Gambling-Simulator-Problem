@@ -48,7 +48,7 @@ public class Gambling {
 			System.out.println("The total profit or loss of the day is " + balanceDay);
 		}
 		System.out.println(" \n In total 30 days, the player has won " + win + " days and loose " + loose + " days");
-		System.out.println("The total gain amount for 20 Days is $" + profit); // printing the total profit
+		System.out.println("The total gain amount for 30 Days is $" + profit); // printing the total profit
 		scanner.close();
 	}
 
