@@ -33,7 +33,7 @@ public class Gambling {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Please enter the amount of Stake:");
 		int num = scanner.nextInt();
-		for (int days = 1; days <= 20; days++) { // loop for 20 days
+		for (int days = 1; days <= 30; days++) { // loop for 20 days
 			stakePerDay = num; // Accepting input for Stake Per day
 			play();
 			System.out.println(" \n The player has stake of " + stakePerDay + " on day " + days);
@@ -47,7 +47,7 @@ public class Gambling {
 			}
 			System.out.println("The total profit or loss of the day is " + balanceDay);
 		}
-		System.out.println(" \n In total 20 days, the player has won " + win + " days and loose " + loose + " days");
+		System.out.println(" \n In total 30 days, the player has won " + win + " days and loose " + loose + " days");
 		System.out.println("The total gain amount for 20 Days is $" + profit); // printing the total profit
 		scanner.close();
 	}
