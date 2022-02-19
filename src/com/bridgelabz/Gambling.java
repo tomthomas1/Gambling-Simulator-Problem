@@ -11,23 +11,31 @@ public class Gambling {
 		System.out.println("Enter the bet price for the game : ");
 		int BetPrice = sc.nextInt();
 
+		int maxStake = StakePerDay + 50 % StakePerDay;
+		int minStake = StakePerDay - 50 % StakePerDay;
+
 		System.out.println("The total stake per days is $" + StakePerDay);
 		System.out.println("Bet price per game is $" + BetPrice);
 
-		int play = (int) (Math.random() * 2);
-		switch (play) {
-		case 0:
-			StakePerDay += BetPrice;
-			System.out.println(" \n The player has won $1");
-			System.out.println("The stake after winning the game is $" + StakePerDay);
-			break;
+		while (StakePerDay > minStake && StakePerDay < maxStake) {
+			int play = (int) (Math.random() * 2);
+			switch (play) {
+			case 0:
+				StakePerDay += BetPrice;
+				System.out.println(" \n The player has won $1");
+				System.out.println("The stake after winning the game is $" + StakePerDay);
+				break;
 
-		case 1:
-			StakePerDay -= BetPrice;
-			System.out.println(" \n The player has lost $1");
-			System.out.println("The stake after lossing the game is $" + StakePerDay);
-			break;
+			case 1:
+				StakePerDay -= BetPrice;
+				System.out.println(" \n The player has lost $1");
+				System.out.println("The stake after lossing the game is $" + StakePerDay);
+				break;
+			}
 		}
+		System.out.println(
+				"Player has reached the 50% stake limit and the stake now is $" + StakePerDay + " for the day.");
+
 	}
 
 }
