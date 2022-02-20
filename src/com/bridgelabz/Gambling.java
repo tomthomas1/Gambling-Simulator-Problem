@@ -10,6 +10,7 @@ public class Gambling {
 	public static int win = 0, monthlyWins = 0, maxWin = 0;
 	public static int loose = 0, monthlyLoose = 0, maxLoss = 0;
 	public static int profit = 0, maxWinDay, maxLossDay;
+	public static int count=1;
 
 	public static void play() {
 		while (stakePerDay > minStake && stakePerDay < maxStake) // Win or Lost 50% of stake
@@ -57,7 +58,7 @@ public class Gambling {
 
 	}
 
-	public static void gamble20Days() {
+	public static void gamble30Days() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Please enter the amount of Stake:");
 		int num = scanner.nextInt();
@@ -73,6 +74,7 @@ public class Gambling {
 			if (calculateMaxLoss()) {
 				maxLossDay = days;
 			}
+			
 
 			int balanceDay = stakePerDay - num; // as the stake per day is $100 so the profit or loss is stakePrice - num
 			profit += balanceDay;
@@ -83,16 +85,31 @@ public class Gambling {
 			}
 			System.out.println("The total profit or loss of the day is " + balanceDay);
 		}
-	}
-
-	public static void main(String[] args) {
-		Gambling gamble = new Gambling();
-		gamble.gamble20Days();
 		System.out.println(" \n In total 30 days, the player has won " + win + " days and loose " + loose + " days");
 		System.out.println("The total gain amount for 30 Days is $" + profit); // printing the total profit
 		System.out.println("Maximum Amount Won: " + maxWin);
 		System.out.println("Maximum Amount Won On Day " + maxWinDay);
 		System.out.println("Maximum Amount Loss: " + maxLoss);
 		System.out.println("Maximum Amount Loss On Day " + maxLossDay);
+	}
+	
+	//if the profit is +ve the player will play or quit the game
+	public static void playNextMonth() {
+		//if the profit is +ve the player will continue
+		while(profit > 0) {	
+			System.out.println("The player has continued to play after " + count + " month as the player is in profit of $ " +profit);
+			gamble30Days();
+			count++;
+		} 
+		//if the profit is -ve the player will quit the game
+			if(profit <= 0){
+			System.out.println(" \n The player has stoped playing after " + count +" month as the player is in loss of $" + profit);
+			count++;
+		}
+	}
+
+	public static void main(String[] args) {
+		gamble30Days();
+		playNextMonth();
 	}
 }
